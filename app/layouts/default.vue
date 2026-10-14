@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { company, navigation } from "~/data/site";
 import { ArrowUpRight, Menu, X, Phone } from "@lucide/vue";
+import logoTeknova from "~/assets/logo/logo-teknova.png";
 const route = useRoute();
 const mobileOpen = ref(false);
 watch(
@@ -18,8 +19,13 @@ watch(
         to="/"
         class="flex shrink-0 items-center gap-2.5 no-underline"
         aria-label="TEKNOVA, về trang chủ"
-        ><span class="brand-symbol">T</span
-        ><span class="brand-word">TEKNOVA</span></NuxtLink
+        ><img
+          :src="logoTeknova"
+          alt=""
+          width="382"
+          height="327"
+          class="h-11 w-auto shrink-0"
+        /><span class="brand-word">TEKNOVA</span></NuxtLink
       >
       <nav
         class="hidden items-center gap-6 lg:flex"
@@ -79,8 +85,16 @@ watch(
     >
       <div>
         <div class="mb-4 flex items-center gap-2">
-          <span class="brand-symbol bg-white text-blue">T</span
-          ><span class="font-bold tracking-[.13em]">TEKNOVA</span>
+          <span class="rounded-md bg-white px-2 py-1">
+            <img
+              :src="logoTeknova"
+              alt=""
+              width="382"
+              height="327"
+              class="h-12 w-auto"
+            />
+          </span>
+          <span class="font-bold tracking-[.13em]">TEKNOVA</span>
         </div>
         <p class="max-w-md text-sm leading-7 text-slate-300">
           {{ company.name }}<br />Tiên phong giải pháp phần mềm, chuyển đổi số y

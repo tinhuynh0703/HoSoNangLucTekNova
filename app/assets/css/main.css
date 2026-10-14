@@ -209,19 +209,6 @@ button:disabled {
   border-bottom: 1px solid var(--color-line);
   backdrop-filter: blur(12px);
 }
-.brand-symbol {
-  display: grid;
-  width: 36px;
-  height: 36px;
-  flex: none;
-  place-items: center;
-  border-radius: 0.25rem;
-  background: var(--color-blue);
-  color: white;
-  font-size: 1.25rem;
-  font-weight: 800;
-  letter-spacing: -0.08em;
-}
 .brand-word {
   font-size: clamp(0.78rem, 2vw, 1.06rem);
   font-weight: 800;

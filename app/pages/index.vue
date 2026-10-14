@@ -68,7 +68,7 @@ const homePartnerRows = [homePartners.slice(0, 10), homePartners.slice(10)];
         </div>
       </div>
     </div>
-    <div class="hero-visual">
+    <div class="hero-visual lg:mt-24 lg:self-start">
       <div class="diagram-panel p-5 sm:p-7">
         <div
           class="flex items-center justify-between border-b border-line pb-4"
