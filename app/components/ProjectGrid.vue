@@ -120,8 +120,10 @@ function close() {
       }
     "
   >
-    <div v-if="selected">
-      <div class="flex items-start justify-between gap-4">
+    <div v-if="selected" class="flex min-h-0 flex-1 flex-col">
+      <header
+        class="flex shrink-0 items-start justify-between gap-4 border-b border-line px-5 pb-4 pt-5 sm:px-8 sm:pt-8"
+      >
         <p class="eyebrow">Chi tiết dự án · {{ selected.categoryLabel }}</p>
         <button
           type="button"
@@ -131,48 +133,57 @@ function close() {
         >
           <X :size="20" />
         </button>
+      </header>
+      <div
+        class="min-h-0 flex-1 overflow-y-auto overscroll-contain px-5 py-5 sm:px-8"
+      >
+        <p class="font-semibold text-muted">
+          {{ selected.client }} · {{ selected.year }}
+        </p>
+        <h2 id="project-dialog-title" class="mt-2 text-3xl font-bold text-navy">
+          {{ selected.title }}
+        </h2>
+        <p class="mt-5 leading-8 text-muted">{{ selected.summary }}</p>
+        <dl class="mt-6 grid gap-4 rounded-md bg-soft p-5">
+          <div
+            v-for="(metric, index) in selected.metrics"
+            :key="metric.label"
+            :class="index ? 'border-t border-line pt-4' : ''"
+          >
+            <dt
+              class="text-xs font-semibold uppercase tracking-wide text-muted"
+            >
+              {{ metric.label }}
+            </dt>
+            <dd class="mt-1 font-bold text-blue">{{ metric.value }}</dd>
+          </div>
+        </dl>
+        <dl class="mt-7 grid gap-4">
+          <div
+            v-for="item in projectModalDetails"
+            :key="item.label"
+            class="border-t border-line pt-4"
+          >
+            <dt class="font-bold text-navy">{{ item.label }}:</dt>
+            <dd class="mt-1 text-sm leading-7 text-muted">{{ item.value }}</dd>
+          </div>
+        </dl>
+        <p class="mt-6 text-sm leading-7 text-muted">
+          Giải pháp được thiết kế tùy biến chuyên sâu cho đơn vị, đáp ứng đầy đủ
+          thông tư hướng dẫn của Bộ Y tế và tiêu chuẩn dữ liệu Chính phủ điện
+          tử.
+        </p>
       </div>
-      <p class="mt-5 font-semibold text-muted">
-        {{ selected.client }} · {{ selected.year }}
-      </p>
-      <h2 id="project-dialog-title" class="mt-2 text-3xl font-bold text-navy">
-        {{ selected.title }}
-      </h2>
-      <p class="mt-5 leading-8 text-muted">{{ selected.summary }}</p>
-      <dl class="mt-6 grid gap-4 rounded-md bg-soft p-5">
-        <div
-          v-for="(metric, index) in selected.metrics"
-          :key="metric.label"
-          :class="index ? 'border-t border-line pt-4' : ''"
-        >
-          <dt class="text-xs font-semibold uppercase tracking-wide text-muted">
-            {{ metric.label }}
-          </dt>
-          <dd class="mt-1 font-bold text-blue">{{ metric.value }}</dd>
-        </div>
-      </dl>
-      <dl class="mt-7 grid gap-4">
-        <div
-          v-for="item in projectModalDetails"
-          :key="item.label"
-          class="border-t border-line pt-4"
-        >
-          <dt class="font-bold text-navy">{{ item.label }}:</dt>
-          <dd class="mt-1 text-sm leading-7 text-muted">{{ item.value }}</dd>
-        </div>
-      </dl>
-      <p class="mt-6 text-sm leading-7 text-muted">
-        Giải pháp được thiết kế tùy biến chuyên sâu cho đơn vị, đáp ứng đầy đủ
-        thông tư hướng dẫn của Bộ Y tế và tiêu chuẩn dữ liệu Chính phủ điện tử.
-      </p>
-      <div class="mt-8 flex flex-wrap gap-3">
+      <footer
+        class="flex shrink-0 flex-wrap gap-3 border-t border-line bg-white px-5 py-4 sm:px-8"
+      >
         <button type="button" class="button-secondary" @click="close">
           Đóng
         </button>
         <NuxtLink to="/lien-he" class="button-primary" @click="close"
           >Liên hệ tư vấn dự án tương tự</NuxtLink
         >
-      </div>
+      </footer>
     </div>
   </dialog>
 </template>
